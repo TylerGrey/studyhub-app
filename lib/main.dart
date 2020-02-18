@@ -1,89 +1,90 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:studyhub/screens/Hub/hub.dart';
+import 'package:studyhub/screens/account/account.dart';
+import 'package:studyhub/screens/discovery/discovery.dart';
+import 'package:studyhub/screens/notice/notification.dart';
+import 'package:studyhub/screens/recommend/recommend.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(StudyHubApp());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class StudyHubApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final HttpLink httpLink = HttpLink(
-      uri: 'https://api.github.com/graphql',
+    return MaterialApp(
+      home: Home(),
     );
+  }
+}
 
-    final AuthLink authLink = AuthLink(
-      getToken: () async => 'Bearer 2dac9491780fef9fad6f65f7d1d720a4c7c1ddb6',
-      // OR
-      // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
-    );
+class Home extends StatefulWidget {
+  @override
+  State createState() {
+    return _HomeState();
+  }
+}
 
-    final Link link = authLink.concat(httpLink);
+class _HomeState extends State<Home> {
+  Widget child;
+  int _selectedIndex = 0;
 
-    ValueNotifier<GraphQLClient> client = ValueNotifier(
-      GraphQLClient(
-        cache: InMemoryCache(),
-        link: link,
-      ),
-    );
+  void _onItemTapped(int index) {
+    if (index == 2) {
+      Navigator.push(context, MaterialPageRoute(builder: (_) {
+        return Hub();
+      }));
 
-    String readRepositories = """
-      query ReadRepositories(\$nRepositories: Int!) {
-        viewer {
-          repositories(last: \$nRepositories) {
-            nodes {
-              id
-              name
-              viewerHasStarred
-            }
-          }
-        }
-      }
-    """;
+      return;
+    }
 
-    return GraphQLProvider(
-      client: client,
-      child: CacheProvider(
-        child: MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    switch (_selectedIndex) {
+      case 0:
+        child = Discovery();
+        break;
+      case 1:
+        child = Recommend();
+        break;
+      case 3:
+        child = Notice();
+        break;
+      case 4:
+        child = Account();
+    }
+    return Scaffold(
+      body: SafeArea(child: child),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            title: Text('탐색하기'),
           ),
-          home: Query(
-            options: QueryOptions(
-              document: readRepositories,
-              // this is the query string you just created
-              variables: {
-                'nRepositories': 50,
-              },
-              pollInterval: 10,
-            ),
-            // Just like in apollo refetch() could be used to manually trigger a refetch
-            // while fetchMore() can be used for pagination purpose
-            builder: (QueryResult result,
-                {VoidCallback refetch, FetchMore fetchMore}) {
-              if (result.errors != null) {
-                return Text(result.errors.toString());
-              }
-
-              if (result.loading) {
-                return Text('Loading');
-              }
-
-              // it can be either Map or List
-              List repositories =
-                  result.data['viewer']['repositories']['nodes'];
-              return ListView.builder(
-                  itemCount: repositories.length,
-                  itemBuilder: (context, index) {
-                    final repository = repositories[index];
-
-                    return Text(repository['name']);
-                  });
-            },
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star_border),
+            title: Text('추천'),
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            title: Text('스터디룸'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.textsms),
+            title: Text('알림'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box),
+            title: Text('계정'),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }

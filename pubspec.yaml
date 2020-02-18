@@ -27,6 +27,9 @@ dependencies:
   # Graphql
   graphql_flutter: ^2.0.0
 
+  # Google map
+  google_maps_flutter: ^0.5.22+3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
