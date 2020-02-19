@@ -67,19 +67,19 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.star_border),
-            title: Text('추천'),
+            title: Text('스터디'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
-            title: Text('스터디룸'),
+            title: Text('허브'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.textsms),
-            title: Text('알림'),
+            title: Text('메세지'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box),
-            title: Text('계정'),
+            title: Text('프로필'),
           ),
         ],
         currentIndex: _selectedIndex,
