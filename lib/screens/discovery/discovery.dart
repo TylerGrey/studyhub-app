@@ -116,7 +116,7 @@ class Discovery extends StatelessWidget {
               alignment: WrapAlignment.start,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.fromLTRB(20, 40, 20, 10),
+                  margin: EdgeInsets.fromLTRB(20, 30, 20, 10),
                   child: Text(
                     '계속 둘러보기',
                     style: TextStyle(
@@ -193,7 +193,7 @@ class Discovery extends StatelessWidget {
               child: Wrap(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: 40, bottom: 10),
+                    margin: EdgeInsets.only(top: 30, bottom: 10),
                     child: Column(
                       children: <Widget>[
                         Align(
