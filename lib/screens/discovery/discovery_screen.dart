@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:studyhub/components/button/bouncedButton.dart';
+import 'package:studyhub/screens/recruitment/recruitment_screen.dart';
 
 class Discovery extends StatelessWidget {
   @override
@@ -65,7 +66,7 @@ class Discovery extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                     scrollDirection: Axis.horizontal,
                     itemCount: 3,
-                    itemBuilder: (BuildContext context, _) {
+                    itemBuilder: (BuildContext context, int position) {
                       return BouncedButton(
                         child: Container(
                           width: 150.0,
@@ -79,14 +80,17 @@ class Discovery extends StatelessWidget {
                               children: <Widget>[
                                 Expanded(
                                   flex: 2,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(10.0),
-                                      topRight: Radius.circular(10.0),
-                                    ),
-                                    child: Image.network(
-                                      'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2650993A56E182A80F',
-                                      fit: BoxFit.fill,
+                                  child: Hero(
+                                    tag: 'category-$position',
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10.0),
+                                        topRight: Radius.circular(10.0),
+                                      ),
+                                      child: Image.network(
+                                        'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2650993A56E182A80F',
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -104,6 +108,14 @@ class Discovery extends StatelessWidget {
                             ),
                           ),
                         ),
+                        onTap: () {
+                          Navigator.push(context, new MaterialPageRoute(
+                              fullscreenDialog: true,
+                              builder: (BuildContext context) {
+                                return Recruitment(tag: 'category-$position',);
+                              }
+                          ));
+                        },
                       );
                     },
                   ),
@@ -116,7 +128,7 @@ class Discovery extends StatelessWidget {
               alignment: WrapAlignment.start,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.fromLTRB(20, 30, 20, 10),
+                  margin: EdgeInsets.fromLTRB(20, 40, 20, 10),
                   child: Text(
                     '계속 둘러보기',
                     style: TextStyle(
@@ -193,7 +205,7 @@ class Discovery extends StatelessWidget {
               child: Wrap(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: 30, bottom: 10),
+                    margin: EdgeInsets.only(top: 40, bottom: 10),
                     child: Column(
                       children: <Widget>[
                         Align(
@@ -239,10 +251,12 @@ class Discovery extends StatelessWidget {
                             children: <Widget>[
                               SizedBox(
                                 height: 100,
+                                width: double.infinity,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(3.0),
                                   child: Image.network(
                                     'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2650993A56E182A80F',
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                               ),
@@ -261,10 +275,49 @@ class Discovery extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                child: Container(
-                                  color: Colors.deepOrange,
+                                child: Text(
+                                  'Handmade pasta with grandma, Learn to Row as a Venetian ABCDEFGHIJK',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
-                              )
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 5.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: SizedBox(
+                                        height: 10,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          child: LinearProgressIndicator(
+                                            value: 4 / 5,
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                                    Colors.orange),
+                                            backgroundColor: Color(0xFFFFDAB8),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 10.0),
+                                      child: Text(
+                                        '4',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Text(' / '),
+                                    Text('5'),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         );
@@ -284,6 +337,68 @@ class Discovery extends StatelessWidget {
                           const Text('모두 보기', style: TextStyle(fontSize: 16)),
                     ),
                   ),
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              margin: EdgeInsets.only(left: 20, right: 20),
+              child: Wrap(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(top: 40, bottom: 10),
+                    child: Column(
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            '2020 상반기 개발직군 채용',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(0, 7, 0, 0),
+                            child: Text(
+                              '"Be a Tech Hero!"\n딜리버리히어로 코리아에서 테크 히어로를 모십니다!',
+                              style: TextStyle(
+                                fontSize: 17,
+                                height: 1.2,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 250,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(3.0),
+                        child: Image.network(
+                          'https://deliveryhero.recruiter.co.kr/upload/12002/image/201903/843a5ecf-59fa-4fc5-bb46-e7a8155ab2e8.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                        margin: EdgeInsets.only(top: 5),
+                        child: Text(
+                          '@Sponsored',
+                          style: TextStyle(color: Colors.grey),
+                        )),
+                  )
                 ],
               ),
             ),

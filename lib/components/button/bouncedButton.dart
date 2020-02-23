@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 
 class BouncedButton extends StatefulWidget {
-  BouncedButton({this.child});
+  BouncedButton({this.child, this.onTap});
+
   final Widget child;
+  final Function onTap;
 
   @override
-  _BouncedButtonState createState() => _BouncedButtonState(child: child);
+  _BouncedButtonState createState() => _BouncedButtonState(child: child, onTap: onTap);
 }
 
-class _BouncedButtonState extends State<BouncedButton> with SingleTickerProviderStateMixin {
-  _BouncedButtonState({this.child});
+class _BouncedButtonState extends State<BouncedButton>
+    with SingleTickerProviderStateMixin {
+  _BouncedButtonState({this.child, this.onTap});
+
   final Widget child;
+  final Function onTap;
 
   double _scale;
   AnimationController _controller;
@@ -38,8 +43,9 @@ class _BouncedButtonState extends State<BouncedButton> with SingleTickerProvider
       duration: Duration(milliseconds: 100),
       lowerBound: 0.0,
       upperBound: 0.1,
-    )
-      ..addListener(() { setState(() {});});
+    )..addListener(() {
+        setState(() {});
+      });
   }
 
   @override
@@ -54,6 +60,7 @@ class _BouncedButtonState extends State<BouncedButton> with SingleTickerProvider
 
   void _onTapUp(TapUpDetails details) {
     _controller.reverse();
+    onTap();
   }
 
   void _onTapCancel() {

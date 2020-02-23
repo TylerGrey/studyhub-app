@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:studyhub/screens/Hub/hub.dart';
 import 'package:studyhub/screens/account/account.dart';
-import 'package:studyhub/screens/discovery/discovery.dart';
+import 'package:studyhub/screens/discovery/discovery_screen.dart';
 import 'package:studyhub/screens/notice/notification.dart';
 import 'package:studyhub/screens/recommend/recommend.dart';
 
