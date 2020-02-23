@@ -66,7 +66,7 @@ class Discovery extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                     scrollDirection: Axis.horizontal,
                     itemCount: 3,
-                    itemBuilder: (BuildContext context, int position) {
+                    itemBuilder: (BuildContext context, _) {
                       return BouncedButton(
                         child: Container(
                           width: 150.0,
@@ -80,17 +80,14 @@ class Discovery extends StatelessWidget {
                               children: <Widget>[
                                 Expanded(
                                   flex: 2,
-                                  child: Hero(
-                                    tag: 'category-$position',
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                      child: Image.network(
-                                        'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2650993A56E182A80F',
-                                        fit: BoxFit.fill,
-                                      ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10.0),
+                                      topRight: Radius.circular(10.0),
+                                    ),
+                                    child: Image.network(
+                                      'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2650993A56E182A80F',
+                                      fit: BoxFit.fill,
                                     ),
                                   ),
                                 ),
@@ -108,14 +105,6 @@ class Discovery extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onTap: () {
-                          Navigator.push(context, new MaterialPageRoute(
-                              fullscreenDialog: true,
-                              builder: (BuildContext context) {
-                                return Recruitment(tag: 'category-$position',);
-                              }
-                          ));
-                        },
                       );
                     },
                   ),
@@ -252,11 +241,14 @@ class Discovery extends StatelessWidget {
                               SizedBox(
                                 height: 100,
                                 width: double.infinity,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(3.0),
-                                  child: Image.network(
-                                    'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2650993A56E182A80F',
-                                    fit: BoxFit.fill,
+                                child: Hero(
+                                  tag: 'recruitment-$index',
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(3.0),
+                                    child: Image.network(
+                                      'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2650993A56E182A80F',
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -320,6 +312,14 @@ class Discovery extends StatelessWidget {
                               ),
                             ],
                           ),
+                          onTap: () {
+                            Navigator.push(context, new MaterialPageRoute(
+                                fullscreenDialog: true,
+                                builder: (BuildContext context) {
+                                  return Recruitment(tag: 'recruitment-$index',);
+                                }
+                            ));
+                          },
                         );
                       }),
                     ),
