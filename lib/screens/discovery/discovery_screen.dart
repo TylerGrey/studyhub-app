@@ -313,12 +313,15 @@ class Discovery extends StatelessWidget {
                             ],
                           ),
                           onTap: () {
-                            Navigator.push(context, new MaterialPageRoute(
-                                fullscreenDialog: true,
-                                builder: (BuildContext context) {
-                                  return Recruitment(tag: 'recruitment-$index',);
-                                }
-                            ));
+                            Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                    fullscreenDialog: true,
+                                    builder: (BuildContext context) {
+                                      return Recruitment(
+                                        tag: 'recruitment-$index',
+                                      );
+                                    }));
                           },
                         );
                       }),
@@ -330,11 +333,14 @@ class Discovery extends StatelessWidget {
                     margin: EdgeInsets.only(top: 30),
                     child: FlatButton(
                       shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(7.0),
-                          side: BorderSide(color: Colors.black)),
+                        borderRadius: new BorderRadius.circular(7.0),
+                        side: BorderSide(color: Colors.black),
+                      ),
                       onPressed: () {},
-                      child:
-                          const Text('모두 보기', style: TextStyle(fontSize: 16)),
+                      child: const Text(
+                        '모두 보기',
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ),
                   ),
                 ],

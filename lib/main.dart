@@ -3,7 +3,7 @@ import 'package:studyhub/screens/Hub/hub.dart';
 import 'package:studyhub/screens/account/account.dart';
 import 'package:studyhub/screens/discovery/discovery_screen.dart';
 import 'package:studyhub/screens/notice/notification.dart';
-import 'package:studyhub/screens/recommend/recommend.dart';
+import 'package:studyhub/screens/study/study_screen.dart';
 
 void main() => runApp(StudyHubApp());
 
@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
         child = Discovery();
         break;
       case 1:
-        child = Recommend();
+        child = Study();
         break;
       case 3:
         child = Notice();
@@ -57,6 +57,7 @@ class _HomeState extends State<Home> {
         child = Account();
     }
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(child: child),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

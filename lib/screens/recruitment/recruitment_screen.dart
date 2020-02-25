@@ -66,6 +66,24 @@ class RecruitmentState extends State<Recruitment> {
                 Navigator.of(context).pop();
               },
             ),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.share,
+                  color: isShrink ? Colors.black : Colors.white,
+                ),
+                onPressed: () {
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.bookmark_border,
+                  color: isShrink ? Colors.black : Colors.white,
+                ),
+                onPressed: () {
+                },
+              ),
+            ],
             flexibleSpace: FlexibleSpaceBar(
               title: isShrink
                   ? Text(
@@ -452,8 +470,8 @@ class RecruitmentState extends State<Recruitment> {
       ),
       bottomNavigationBar: SafeArea(
         child: Container(
-          height: 70,
-          padding: EdgeInsets.all(10.0),
+          height: 60,
+          padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
           child: RaisedButton(
             onPressed: () {},
             color: Colors.orange,
