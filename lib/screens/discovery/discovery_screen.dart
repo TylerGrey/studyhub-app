@@ -204,6 +204,7 @@ class Discovery extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'Spoqa',
                             ),
                           ),
                         ),
@@ -314,14 +315,16 @@ class Discovery extends StatelessWidget {
                           ),
                           onTap: () {
                             Navigator.push(
-                                context,
-                                new MaterialPageRoute(
-                                    fullscreenDialog: true,
-                                    builder: (BuildContext context) {
-                                      return Recruitment(
-                                        tag: 'recruitment-$index',
-                                      );
-                                    }));
+                              context,
+                              new MaterialPageRoute(
+                                fullscreenDialog: true,
+                                builder: (BuildContext context) {
+                                  return Recruitment(
+                                    tag: 'recruitment-$index',
+                                  );
+                                },
+                              ),
+                            );
                           },
                         );
                       }),

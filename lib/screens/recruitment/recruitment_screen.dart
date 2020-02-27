@@ -59,7 +59,7 @@ class RecruitmentState extends State<Recruitment> {
             expandedHeight: 200.0,
             leading: IconButton(
               icon: Icon(
-                Icons.arrow_back_ios,
+                CupertinoIcons.back,
                 color: isShrink ? Colors.black : Colors.white,
               ),
               onPressed: () {

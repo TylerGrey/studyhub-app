@@ -76,3 +76,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+    - family: Spoqa
+      fonts:
+        - asset: fonts/Spoqa-Han-Sans-Bold.ttf
+          weight: 700
+        - asset: fonts/Spoqa-Han-Sans-Light.ttf
+          weight: 300
+        - asset: fonts/Spoqa-Han-Sans-Regular.ttf
+        - asset: fonts/Spoqa-Han-Sans-Thin.ttf
+          weight: 100
