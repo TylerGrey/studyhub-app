@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:studyhub/screens/Hub/hub.dart';
+import 'package:studyhub/screens/Hub/hub_screen.dart';
 import 'package:studyhub/screens/account/account.dart';
 import 'package:studyhub/screens/discovery/discovery_screen.dart';
 import 'package:studyhub/screens/notice/notification.dart';
@@ -29,9 +29,15 @@ class _HomeState extends State<Home> {
 
   void _onItemTapped(int index) {
     if (index == 2) {
-      Navigator.push(context, MaterialPageRoute(builder: (_) {
-        return Hub();
-      }));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) {
+            return Hub();
+          },
+          fullscreenDialog: true,
+        ),
+      );
 
       return;
     }

@@ -30,6 +30,9 @@ dependencies:
   # Google map
   google_maps_flutter: ^0.5.22+3
 
+  # Swiper
+  flutter_swiper : ^1.1.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
