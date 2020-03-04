@@ -470,8 +470,8 @@ class RecruitmentState extends State<Recruitment> {
       ),
       bottomNavigationBar: SafeArea(
         child: Container(
-          height: 60,
-          padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
+          height: 76,
+          padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
           child: RaisedButton(
             onPressed: () {},
             color: Colors.orange,

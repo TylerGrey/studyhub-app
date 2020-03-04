@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:studyhub/screens/Hub/hub_screen.dart';
 import 'package:studyhub/screens/account/account.dart';
 import 'package:studyhub/screens/discovery/discovery_screen.dart';
-import 'package:studyhub/screens/notice/notification.dart';
+import 'package:studyhub/screens/message/message_screen.dart';
 import 'package:studyhub/screens/study/study_screen.dart';
 
 void main() => runApp(StudyHubApp());
@@ -78,11 +78,11 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
-            title: Text('허브'),
+            title: Text('지도'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.textsms),
-            title: Text('메세지'),
+            icon: Icon(Icons.message),
+            title: Text('메시지'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box),
