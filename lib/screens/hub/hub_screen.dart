@@ -51,7 +51,7 @@ class MapSampleState extends State<Hub> {
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              margin: EdgeInsets.only(top: 120.0),
+              margin: EdgeInsets.only(top: 100.0),
               height: 30.0,
               width: 150.0,
               decoration: BoxDecoration(
